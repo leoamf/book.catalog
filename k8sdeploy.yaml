@@ -1,0 +1,99 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: charllenge-book
+---
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+  name: book-catalog
+  namespace: charllenge-book
+spec: 
+  selector: 
+    matchLabels: 
+      app: book-catalog 
+  replicas: 1
+  template:
+    metadata: 
+      labels: 
+        app: book-catalog 
+    spec: 
+      containers: 
+      - name: book-catalog
+        image: book-catalog:latest
+        ports: 
+        - containerPort: 80
+        env:
+        - name: spring.application.name
+          value: "mongodb://localhost:27017/catalog"
+        resources:
+          requests:
+            cpu: 10
+            memory: 80Mi
+          limits:
+            cpu: 25m
+            memory: 300Mi
+        livenessProbe:
+          initialDelaySeconds: 240
+          periodSeconds: 120
+          httpGet:
+            path: /actuator/health
+            port: 80
+        readinessProbe:
+          initialDelaySeconds: 240
+          periodSeconds: 120
+          httpGet:
+            path: /actuator/health
+            port: 80
+        terminationMessagePath: /book-catalog/termination-log
+        terminationMessagePolicy: File
+        imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: book-catalog
+  name: book-catalog
+  namespace: charllenge-book
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: book-catalog 
+  type: NodePort     
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: book-catalog-hpa
+  namespace: book-catalog
+spec:
+  minReplicas: 1
+  maxReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: book-catalog
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 95
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 95
