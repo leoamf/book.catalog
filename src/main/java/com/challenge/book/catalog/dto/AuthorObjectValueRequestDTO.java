@@ -1,6 +1,7 @@
 package com.challenge.book.catalog.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ObjectValueRequestDTO {
-    @NotEmpty(message = "O id é obrigatorio.")
-    private String id;
+public class AuthorObjectValueRequestDTO {
+    @NotNull(message = "O codigo é obrigatorio.")
+    @NotEmpty(message = "O codigo é obrigatorio.")
+    private String codAu;
 }

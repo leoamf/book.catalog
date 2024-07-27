@@ -11,7 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 @Document(value = "Book")
 public class Book {
-    public static final String ENTITY_NAME = "Book";
+    public static final String ENTITY_NAME = "Livro";
+
     @Id
     private String codL;
 

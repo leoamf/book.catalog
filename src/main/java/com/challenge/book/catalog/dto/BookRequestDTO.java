@@ -38,11 +38,14 @@ public class BookRequestDTO {
     @Pattern(regexp = "[\\d{4}]+", message = "O ano de publicação só deve conter numeros")
     private String releaseYear;
 
+    @NotEmpty(message = "Preço por canal deve ser informnado.")
     private List<PriceChannelRequestDTO> priceByChannels;
 
-    private List<ObjectValueRequestDTO> authors;
+    @NotEmpty(message = "Autor deve ser informnado.")
+    private List<AuthorObjectValueRequestDTO> authors;
 
-    private List<ObjectValueRequestDTO> subjects;
+    @NotEmpty(message = "Assunto deve ser informnado.")
+    private List<SubjectObjectValueRequestDTO> subjects;
 
     public static Book toBook(BookRequestDTO request) {
         return Book.builder()
@@ -66,23 +69,23 @@ public class BookRequestDTO {
                 .collect(Collectors.toList());
     }
 
-    private List<Author> toAuthors(List<ObjectValueRequestDTO> request) {
+    private List<Author> toAuthors(List<AuthorObjectValueRequestDTO> request) {
         if (request == null || request.isEmpty()) {
             return Collections.emptyList();
         }
         return request
                 .stream()
-                .map(r -> Author.builder().codAu(r.getId()).build())
+                .map(r -> Author.builder().codAu(r.getCodAu()).build())
                 .collect(Collectors.toList());
     }
 
-    private List<Subject> toSubjects(List<ObjectValueRequestDTO> request) {
+    private List<Subject> toSubjects(List<SubjectObjectValueRequestDTO> request) {
         if (request == null || request.isEmpty()) {
             return Collections.emptyList();
         }
         return request
                 .stream()
-                .map(r -> Subject.builder().codAs(r.getId()).build())
+                .map(r -> Subject.builder().codAs(r.getCodAs()).build())
                 .collect(Collectors.toList());
     }
 }

@@ -1,4 +1,4 @@
-# Book.Catalog
+# Book.Catalog.Api
 
 Este documentação contém as diretrizes iniciais para uso da aplicação
 
