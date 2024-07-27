@@ -23,7 +23,7 @@ mvn clean verify
 ## Guide Build
 
 ### Step to deploy
-Para realizar o deploy da aplicação
+Para realizar o deploy da aplicação em kubernetes
 
 ```bash
 mvn clean  package -DskipTests -X

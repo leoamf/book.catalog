@@ -3,40 +3,39 @@ package com.challenge.book.catalog.dto;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.hibernate.validator.constraints.Range;
 import com.challenge.book.catalog.model.Author;
 import com.challenge.book.catalog.model.Book;
 import com.challenge.book.catalog.model.PriceChannel;
 import com.challenge.book.catalog.model.Subject;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class BookRequestDTO {
 
-    @NotBlank(message = "Title cannot be null or blank")
-    @NotEmpty(message = "The Title is required.")
-    @Size(min = 1, max = 40, message = "The length of Title must be between 1 and 40 characters.")
+    @NotEmpty(message = "O titulo é obrigatorio.")
+    @Size(min = 1, max = 40, message = "O tamanho do campo titulo deve ser de 1 a 40 caracteres.")
     private String title;
 
-    @NotBlank(message = "Publishing Company cannot be null or blank")
-    @NotEmpty(message = "The Publishing Company is required.")
-    @Size(min = 1, max = 40, message = "The length of Publishing Company must be between 1 and 40 characters.")
+    @NotEmpty(message = "A editora é obrigatorio.")
+    @Size(min = 1, max = 40, message = "O tamanho do campo editora deve ser de 1 a 40 caracteres.")
     private String publishingCompany;
 
-    @NotNull(message = "The edition is required.")
-    @Range(min = 1, message = "The edition is required.")
+    @NotNull(message = "A edição é obrigatorio.")
     private Integer edition;
 
-    @NotEmpty(message = "The Release Year is required.")
-    @Size(min = 4, max = 4, message = "The length of Release Year must be 4 characters.")
-    @Pattern(regexp = "[\\d]+", message = "Release Year must contain only numbers")
+    @NotEmpty(message = "O ano de publicação é obrigatorio.")
+    @Size(min = 4, max = 4, message = "O tamanho do campo ano de publicação deve ser de 4 caracteres.")
+    @Pattern(regexp = "[\\d{4}]+", message = "O ano de publicação só deve conter numeros")
     private String releaseYear;
 
     private List<PriceChannelRequestDTO> priceByChannels;

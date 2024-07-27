@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ import com.challenge.book.catalog.service.BookService;
 import com.challenge.book.catalog.service.SubjectService;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/subject")
 @Tag(name = "APIs of subject", description = "Collections APIs of subject")
 @Validated
