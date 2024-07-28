@@ -75,7 +75,7 @@ public class SubjectController {
     @Operation(summary = "Get list of all subjects", description = "Get list of all subjects from database")
     @ApiResponse(responseCode = "200", description = "OK")
     public ResponseEntity<List<Subject>> getAll() {
-        return ResponseEntity.ok(subjectService.gettAll());
+        return ResponseEntity.ok(subjectService.getAll());
     }
 
     @PutMapping(value = "/{codAs}", produces = MediaType.APPLICATION_JSON_VALUE)

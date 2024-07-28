@@ -12,7 +12,7 @@ public interface SubjectService {
 
     Subject get(String codAs);
 
-    List<Subject> gettAll();
+    List<Subject> getAll();
 
     void delete(String codAs);
 

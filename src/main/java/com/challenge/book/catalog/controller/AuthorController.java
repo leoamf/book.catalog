@@ -73,7 +73,7 @@ public class AuthorController {
     @Operation(summary = "Get list of all authors", description = "Get list of all authors from database")
     @ApiResponse(responseCode = "200", description = "OK")
     public ResponseEntity<List<Author>> getAll() {
-        return ResponseEntity.ok(authorService.gettAll());
+        return ResponseEntity.ok(authorService.getAll());
     }
 
     @PutMapping(value = "/{codAu}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -12,7 +12,7 @@ public interface AuthorService {
 
     Author get(String codAu);
 
-    List<Author> gettAll();
+    List<Author> getAll();
 
     void delete(String codAu);
 

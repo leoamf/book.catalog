@@ -36,7 +36,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> gettAll() {
+    public List<Author> getAll() {
         return authorRepository.findAll();
     }
 

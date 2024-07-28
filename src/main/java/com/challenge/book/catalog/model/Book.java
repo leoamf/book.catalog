@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 @Builder
-@Document(value = "Book")
+@Document(value = "Livro")
 public class Book {
     public static final String ENTITY_NAME = "Livro";
 

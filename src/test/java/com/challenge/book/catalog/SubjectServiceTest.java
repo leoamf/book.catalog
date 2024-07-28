@@ -154,7 +154,7 @@ public class SubjectServiceTest {
                 when(this.repository.findAll()).thenReturn(subjectsMock);
 
                 // Action
-                List<Subject> subjects = this.service.gettAll();
+                List<Subject> subjects = this.service.getAll();
 
                 // Asserts
                 verify(this.repository, times(1)).findAll();

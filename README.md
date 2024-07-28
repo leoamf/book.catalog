@@ -8,6 +8,47 @@ Este documentação contém as diretrizes iniciais para uso da aplicação
 Você precisa de um servidor de dados MongoDB
 Para configurar a base na aplicação, basta informar a URI da base na variável de ambiente : ```spring.data.mongodb.uri
 
+Script View:
+db.createView( "ViewLivro", "Livro",
+[
+  {
+    $lookup: {
+      from: "Autor",
+      localField: "Autores._id",
+      foreignField: "_id",
+      as: "AutoresLivro"
+    }
+  },
+  {
+        $unwind: {
+            path: "$AutoresLivro"
+        }
+    },
+  {
+    $lookup: {
+      from: "Assunto",
+      localField: "Assuntos._id",
+      foreignField: "_id",
+      as: "AssuntoLivro"
+    }
+  },
+    {
+        $unwind: {
+            path: "$AssuntoLivro"
+        }
+    },
+  {
+    $project: {
+      _id: 0,
+      titulo: 1,
+      edicao: 2,
+      anoPublicacao: 3,
+      AutoresLivros: "$AutoresLivro.Nome",
+      AssuntoLivros: "$AssuntoLivro.Descricao"
+    }
+  }
+]);
+
 ### Start application
 
 ```bash

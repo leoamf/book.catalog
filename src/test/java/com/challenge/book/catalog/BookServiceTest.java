@@ -227,7 +227,7 @@ public class BookServiceTest {
                 when(this.repository.findAll()).thenReturn(booksMock);
 
                 // Action
-                List<Book> books = this.bookService.gettAll();
+                List<Book> books = this.bookService.getAll();
 
                 // Asserts
                 verify(this.repository, times(1)).findAll();

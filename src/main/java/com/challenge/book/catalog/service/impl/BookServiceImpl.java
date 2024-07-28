@@ -58,7 +58,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> gettAll() {
+    public List<Book> getAll() {
         return bookRepository.findAll();
     }
 
@@ -69,7 +69,7 @@ public class BookServiceImpl implements BookService {
     }
 
     private List<Book> getByAuthor(String codAu) {
-        return this.gettAll().stream()
+        return this.getAll().stream()
                 .filter(e -> e.getAuthors()
                         .stream()
                         .anyMatch(a -> a.getCodAu().equals(codAu)))
@@ -81,7 +81,7 @@ public class BookServiceImpl implements BookService {
     }
 
     private List<Book> getBySubject(String codAs) {
-        return this.gettAll().stream()
+        return this.getAll().stream()
                 .filter(e -> e.getSubjects()
                         .stream()
                         .anyMatch(a -> a.getCodAs().equals(codAs)))

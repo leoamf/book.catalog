@@ -68,7 +68,7 @@ public class BookController {
     @Operation(summary = "Get list of all books", description = "Get list of all books from database")
     @ApiResponse(responseCode = "200", description = "OK")
     public ResponseEntity<List<Book>> getAll() {
-        return ResponseEntity.ok(bookService.gettAll());
+        return ResponseEntity.ok(bookService.getAll());
     }
 
     @PutMapping(value = "/{codL}", produces = MediaType.APPLICATION_JSON_VALUE)

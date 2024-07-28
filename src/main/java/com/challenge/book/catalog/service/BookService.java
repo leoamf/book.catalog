@@ -12,7 +12,7 @@ public interface BookService {
 
     Book get(String codL);
 
-    List<Book> gettAll();
+    List<Book> getAll();
 
     void delete(String codL);
 
