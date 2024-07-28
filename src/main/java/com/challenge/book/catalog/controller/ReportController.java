@@ -7,7 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,11 +29,11 @@ public class ReportController {
         this.reportService = reportService;
     }
 
-    @PostMapping()
-    @Operation(summary = "Build the report", description = "Build the report from database")
+    @GetMapping()
+    @Operation(summary = "Get the report", description = "Get the report from database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK") })
-    public ResponseEntity<?> build() {
+    public ResponseEntity<?> get() {
 
         byte[] reportContent = reportService.getReport();
 

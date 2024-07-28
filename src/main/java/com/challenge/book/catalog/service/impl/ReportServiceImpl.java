@@ -11,7 +11,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ResourceUtils;
 
 import com.challenge.book.catalog.exception.ReportErrorException;
-import com.challenge.book.catalog.repository.ViewRepository;
+import com.challenge.book.catalog.repository.ReportRepository;
 import com.challenge.book.catalog.service.BookService;
 import com.challenge.book.catalog.service.ReportService;
 
@@ -28,9 +28,9 @@ import net.sf.jasperreports.engine.util.JRSaver;
 
 @Service
 public class ReportServiceImpl implements ReportService {
-    private final ViewRepository viewRepository;
+    private final ReportRepository viewRepository;
 
-    public ReportServiceImpl(ViewRepository viewRepository) {
+    public ReportServiceImpl(ReportRepository viewRepository) {
         this.viewRepository = viewRepository;
     }
 

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.challenge.book.catalog.model.ViewBook;
 
 @Repository
-public interface ViewRepository extends MongoRepository<ViewBook, String> {
+public interface ReportRepository extends MongoRepository<ViewBook, String> {
 
 }
