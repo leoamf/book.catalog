@@ -1,7 +1,7 @@
 # Book.Catalog.Api
 
 Esta documentação contém as diretrizes iniciais para uso da aplicação.
-Aplicação desenvolvida em Java 22, mvn 3 e MongoDB.
+Aplicação desenvolvida em Java 22, mvn 3.6.3 e MongoDB.
 
 ## Guide Development
 
