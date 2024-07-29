@@ -1,6 +1,7 @@
 # Book.Catalog.Api
 
-Este documentação contém as diretrizes iniciais para uso da aplicação
+Esta documentação contém as diretrizes iniciais para uso da aplicação.
+Aplicação desenvolvida em angular 15.
 
 ## Guide Development
 
